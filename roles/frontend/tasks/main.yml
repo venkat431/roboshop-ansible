@@ -1,3 +1,12 @@
-- name: task from frontend
-  ansible.builtin.debug:
-    msg: frontend and URL is {{ URL }}
+#yum install nginx -y
+
+- name: Install Nginx
+  ansible.builtin.yum:
+    name: nginx
+    state: installed
+
+#  rm -rf /usr/share/nginx/html/*
+- name: Remove old content
+  ansible.builtin.file:
+    path: /usr/share/nginx/html/*
+    state: absent
