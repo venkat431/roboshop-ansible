@@ -8,5 +8,17 @@
 #  rm -rf /usr/share/nginx/html/*
 - name: Remove old content
   ansible.builtin.file:
-    path: /usr/share/nginx/html/*
+    path: /usr/share/nginx/html
     state: absent
+
+- name: Creating App directory
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+    state: directory
+
+# curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
+- name: Download and extract the Application files
+  ansible.builtin.unarchive:
+    src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
+    dest: /tmp/frontend.zip
+    remote_src: yes
