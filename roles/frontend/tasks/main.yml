@@ -1,3 +1,4 @@
 - name: task from roboshop
   ansible.builtin.debug:
-    msg: frontend and URL is {{ URL }}
+    msg: frontend
+#and URL is {{ URL }}
