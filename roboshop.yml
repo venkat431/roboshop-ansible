@@ -1,4 +1,4 @@
-- name: Roboshop file
-  hosts: all
+- name: Run Roboshop setup
+  hosts: localhost
   roles:
     - "{{ role_name }}"
