@@ -1,4 +1,4 @@
 - name: Roboshop file
   hosts: all
   roles:
-    - {{ role_name }}"
+    - "{{ role_name }}"
