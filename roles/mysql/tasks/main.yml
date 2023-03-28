@@ -28,3 +28,4 @@
 - name: Disabling Mysql module
   ansible.builtin.dnf:
     name: mysql
+    state: absent
