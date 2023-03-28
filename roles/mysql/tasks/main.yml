@@ -29,3 +29,10 @@
   ansible.builtin.dnf:
     name: mysql
     state: absent
+
+- name: Copy Mysql config file
+  ansible.builtin.copy:
+    src: mysql.repo
+    dest: /etc/yum.repos.d/mysql.repo
+
+- name: Install Mysql
