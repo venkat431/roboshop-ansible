@@ -17,8 +17,19 @@
     state: directory
 
 # curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
-- name: Download and extract the Application files
+- name: Download and extract the frontend content
   ansible.builtin.unarchive:
     src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
-    dest: /tmp/frontend.zip
+    dest: /usr/share/nginx/html
     remote_src: yes
+
+- name: Copy Roboshop config file
+  ansible.builtin.copy:
+    src: roboshop.conf
+    dest: /etc/nginx/default.d/roboshop.conf
+
+- name: Enable Nginx systemd service
+  ansible.builtin.systemd:
+    name: nginx
+    state: restarted
+    enabled: true
