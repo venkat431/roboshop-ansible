@@ -1,9 +1,9 @@
-#- name: Download and Install Redis
-#  ansible.builtin.yum:
-#    name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
-#    state: installed
-#    disable_gpg_check: true
-#
+- name: Download and Install Redis
+  ansible.builtin.yum:
+    name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+    state: installed
+    disable_gpg_check: true
+
 #- name: Enabling Redis 6.2 version
 #  ansible.builtin.dnf:
 #    name: "@redis:remi-6.2"
