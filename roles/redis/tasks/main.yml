@@ -4,11 +4,11 @@
     state: installed
     disable_gpg_check: true
 
-#- name: Enabling Redis 6.2 version
-#  ansible.builtin.dnf:
-#    name: "@redis:remi-6.2"
-#    state: installed
-#
+- name: Enabling Redis 6.2 version
+  ansible.builtin.dnf:
+    name: "@redis:remi-6.2"
+    state: installed
+
 ##- name: Install Redis
 ##  ansible.builtin.yum:
 ##    name: redis
