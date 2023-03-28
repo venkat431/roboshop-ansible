@@ -4,30 +4,30 @@
     state: installed
     disable_gpg_check: true
 
-#- name: Enabling Redis 6.2 version
-#  ansible.builtin.dnf:
-#    name: "@redis:remi-6.2"
-#    state: installed
-
-- name: Install Redis
-  ansible.builtin.yum:
-    name: redis
+- name: Enabling Redis 6.2 version
+  ansible.builtin.dnf:
+    name: "@redis:remi-6.2"
     state: installed
 
-#- name: Update redis listener address
-#  ansible.builtin.replace:
-#    path: /etc/redis.conf
-#    regexp: "127.0.0.1"
-#    replace: "0.0.0.0"
-#
-#- name: Update redis listener address
-#  ansible.builtin.replace:
-#    path: /etc/redis/redis.conf
-#    regexp: "127.0.0.1"
-#    replace: "0.0.0.0"
-#
-#- name: Start systemd Redis service
-#  ansible.builtin.systemd:
+#- name: Install Redis
+#  ansible.builtin.yum:
 #    name: redis
-#    state: restarted
-#    enabled: true
+#    state: installed
+
+- name: Update redis listener address
+  ansible.builtin.replace:
+    path: /etc/redis.conf
+    regexp: "127.0.0.1"
+    replace: "0.0.0.0"
+
+- name: Update redis listener address
+  ansible.builtin.replace:
+    path: /etc/redis/redis.conf
+    regexp: "127.0.0.1"
+    replace: "0.0.0.0"
+
+- name: Start systemd Redis service
+  ansible.builtin.systemd:
+    name: redis
+    state: restarted
+    enabled: true
