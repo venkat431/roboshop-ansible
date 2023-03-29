@@ -27,12 +27,12 @@
 
 - name: Download Erlang repo
   ansible.builtin.archive:
-    src: https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh
+    path: https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh
     remote_src: yes
 
 - name: Download rabbitmq package
   ansible.builtin.archive:
-    src: https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh
+    path: https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh
     remote_src: yes
 
 - name: Install Rabbitmq server
