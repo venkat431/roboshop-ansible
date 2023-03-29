@@ -1,11 +1,3 @@
-#print_head " Disabling Mysql  "
-#dnf module disable mysql -y &>>${log_file}
-#status_check $?
-#
-#print_head " Copying mysql config file "
-#cp ${code_dir}/configs/mysql.repo /etc/yum.repos.d/mysql.repo &>>${log_file}
-#status_check $?
-#
 #print_head " Installing mysql  "
 #yum install mysql-community-server -y &>>${log_file}
 #status_check $?
@@ -35,4 +27,13 @@
     src: mysql.repo
     dest: /etc/yum.repos.d/mysql.repo
 
-#- name: Install Mysql
+- name: Install Mysql
+  ansible.builtin.yum:
+    name: mysql-community-server
+    state: installed
+
+- name: Start Mysql systemd service
+  ansible.builtin.systemd:
+    name: mysqld
+    state: restarted
+    enabled: true
