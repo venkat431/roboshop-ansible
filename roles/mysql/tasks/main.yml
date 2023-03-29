@@ -29,7 +29,7 @@
 
 - name: Install Mysql
   ansible.builtin.yum:
-    name: mysql-community-server=5.7
+    name: mysql-community-server<=5.7
     state: installed
 
 - name: Start Mysql systemd service
