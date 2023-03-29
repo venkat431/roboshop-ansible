@@ -33,7 +33,7 @@
 - name: Start Mysql systemd service
   ansible.builtin.systemd:
     name: mysqld
-    state: restarted
+    state: started
     enabled: yes
 
 - name: Set root password
