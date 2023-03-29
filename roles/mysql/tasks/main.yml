@@ -35,4 +35,4 @@
     src: mysql.repo
     dest: /etc/yum.repos.d/mysql.repo
 
-- name: Install Mysql
+#- name: Install Mysql
