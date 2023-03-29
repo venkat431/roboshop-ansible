@@ -18,9 +18,7 @@
 #status_check $?
 
 - name: Disabling Mysql module
-  ansible.builtin.dnf:
-    name: mysql
-    state: absent
+  ansible.builtin.shell: dnf module disable mysql -y
 
 - name: Copy Mysql config file
   ansible.builtin.copy:
@@ -29,7 +27,7 @@
 
 - name: Install Mysql
   ansible.builtin.yum:
-    name: mysql-community-server<=5.7
+    name: mysql-community-server
     state: installed
 
 - name: Start Mysql systemd service
