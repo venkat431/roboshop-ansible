@@ -29,7 +29,7 @@
 
 - name: Install Mysql
   ansible.builtin.yum:
-    name: mysql-server
+    name: mysql-community-server-5.7.40-1.el7.x86_64.rpm
     state: installed
 
 - name: Start Mysql systemd service
