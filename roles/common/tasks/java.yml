@@ -9,15 +9,18 @@
 
 - name: Cleaning Maven package
   ansible.builtin.shell: mvn clean package
+  args:
+    chdir: /app
 
 - name: Move application jar files
   ansible.builtin.copy:
-    src: /app/target/${component}-1.0.jar
-    dest: /app/${component}.jar
+    src: /app/target/{{ component }}-1.0.jar
+    dest: /app/{{ component }}.jar
 
 - name: Setup schema
   ansible.builtin.import_tasks:
     file: schema-setup.yml
+  when: schema_type is defined
 
 - name: Setup systemD
   ansible.builtin.import_tasks:
