@@ -1,18 +1,18 @@
 - name: Mongodb schema
   when: schema_type == "mongo"
   block:
-  - name: Copying Mongodb repo
-    ansible.builtin.copy:
-      src: mongo.repo
-      dest: /etc/yum.repos.d/mongo.db
+    - name: Copying Mongodb repo
+      ansible.builtin.copy:
+        src: mongo.repo
+        dest: /etc/yum.repos.d/mongo.db
 
-  - name: Install Mongodb client
-    ansible.builtin.yum:
-      name: mongodb-org-shell
-      state: installed
+    - name: Install Mongodb client
+      ansible.builtin.yum:
+        name: mongodb-org-shell
+        state: installed
 
-  - name: Load Mongodb database
-    ansible.builtin.shell: mongo --host mongodb-dev.devops-practice.tech </app/schema/{{ component }}.js
+    - name: Load Mongodb database
+      ansible.builtin.shell: mongo --host mongodb-dev.devops-practice.tech </app/schema/{{ component }}.js
 
 - name: Mysql schema
   when: schema_type == "mysql"
