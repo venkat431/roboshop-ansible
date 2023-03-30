@@ -5,12 +5,12 @@
 
 - name: Deleting Old  directory
   ansible.builtin.file:
-    src: /app
+    path: /app
     state: absent
 
 - name: Creating Application directory
   ansible.builtin.file:
-    src: /app
+    path: /app
     state: directory
 
 - name: Download and extract application code
