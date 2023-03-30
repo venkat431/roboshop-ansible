@@ -2,7 +2,6 @@
   ansible.builtin.user:
     name: roboshop
 
-
 - name: Deleting Old  directory
   ansible.builtin.file:
     path: /app
