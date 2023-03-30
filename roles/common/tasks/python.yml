@@ -16,7 +16,7 @@
     state: installed
 
 - name: Setting Application Prerequisites
-  ansible.builtin.import_task:
+  ansible.builtin.import_tasks:
     file: app-prereq.yml
 
 - name: Install python dependencies
@@ -24,5 +24,5 @@
     requirements: /app/requirements.txt
 
 - name: setup systemD
-  ansible.builtin.import_task:
+  ansible.builtin.import_tasks:
     file: systemd-setup.yml
