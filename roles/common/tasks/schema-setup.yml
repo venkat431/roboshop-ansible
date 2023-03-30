@@ -1,24 +1,3 @@
-#if [ "${schema_type}" == "mongo" ]; then
-#print_head "Copying MONGODB repo file  "
-#cp ${code_dir}/configs/mongodb.repo /etc/yum.repos.d/mongo.repo &>>${log_file}
-#status_check $?
-#
-#print_head "Installing MongoDB client "
-#yum install mongodb-org-shell -y &>>${log_file}
-#status_check $?
-#
-#print_head "Load MongoDB database"
-#mongo --host mongodb-dev.devops-practice.tech </app/schema/${component}.js &>>${log_file}
-#status_check $?
-#elif [ "${schema_type}" == "mysql" ]; then
-#print_head "Installing mysql "
-#yum install mysql -y &>>${log_file}
-#status_check $?
-#
-#print_head "Connecting mysql database"
-#mysql -h mysql-dev.devops-practice.tech -uroot -p${mysql_root_password} < /app/schema/${component}.sql &>>${log_file}
-#status_check $?
-
 - name: Mongodb schema
   when: schema_type == "mongo"
   block:
