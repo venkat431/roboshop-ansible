@@ -12,7 +12,7 @@
     name:
       - python36
       - gcc
-      - python-devel
+      - python3-devel
     state: installed
 
 - name: Setting Application Prerequisites
