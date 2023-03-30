@@ -1,7 +1,6 @@
 - name: Download NodeJs Repo file
   ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
-
 - name: Installing NodeJs
   ansible.builtin.yum:
     name: nodejs
@@ -19,7 +18,7 @@
 - name: Loading Schema setup
   ansible.builtin.import_tasks:
     file: schema-setup.yml
-  when: schema_type is defined
+  when: schema_type is defined # it will skip for other components which arent defined for schema_type
 
 - name: SystemD setup
   ansible.builtin.import_tasks:
