@@ -1,40 +1,4 @@
-- name: Download NodeJs Repo file
-  ansible.builtin.archive:
-    src: https://rpm.nodesource.com/setup_lts.x
-    remote_src: yes
-
-- name: Installing NodeJs
-  ansible.builtin.yum:
-    name: nodejs
-    state: installed
-
-- name: Creating Application user
-  ansible.builtin.user:
-    name: roboshop
-
-- name: Creating Application directory
-  ansible.builtin.file:
-    src: /app
-    state: directory
-
-- name: Download and extract application code
-  ansible.builtin.archive:
-    src: https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip
-    dest: /app
-    remote_src: yes
-
-- name: Install npm package
-  community.general.npm:
-    name: npm
-
-- name: Copy Catalogue service file
-  ansible.builtin.copy:
-    src: catalogue.service
-    dest: /etc/systemd/system/catalogue.service
-
-- name: Start systemd service
-  ansible.builtin.systemd:
-    name: catalogue
-    state: started
-    enabled: true
-    daemon-reload: true
+- name: Run tasks/other.yaml instead of 'main'
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: nodejs

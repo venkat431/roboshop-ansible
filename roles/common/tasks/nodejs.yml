@@ -1,0 +1,24 @@
+- name: Download NodeJs Repo file
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+
+
+- name: Installing NodeJs
+  ansible.builtin.yum:
+    name: nodejs
+    state: installed
+
+- name: Import Application Prerequisites
+  ansible.builtin.import_tasks:
+    file: app-prereq.yaml
+
+- name: Install npm package
+  community.general.npm:
+    name: npm
+
+- name: Loading Schema setup
+  ansible.builtin.import_tasks:
+    file: schema-setup.yaml
+
+- name: SystemD setup
+  ansible.builtin.import_tasks:
+    file: systemd-setup.yaml
