@@ -9,7 +9,7 @@
 
 - name: Import Application Prerequisites
   ansible.builtin.import_tasks:
-    file: app-prereq.yaml
+    file: app-prereq.yml
 
 - name: Install npm package
   community.general.npm:
@@ -18,8 +18,8 @@
 
 - name: Loading Schema setup
   ansible.builtin.import_tasks:
-    file: schema-setup.yaml
+    file: schema-setup.yml
 
 - name: SystemD setup
   ansible.builtin.import_tasks:
-    file: systemd-setup.yaml
+    file: systemd-setup.yml
