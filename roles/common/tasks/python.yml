@@ -1,0 +1,28 @@
+#cd /app &>>${log_file}
+#
+#print_head "Download python dependencies"
+#pip3.6 install -r requirements.txt &>>${log_file}
+#status_check $?
+#
+#  #systemd setup function is calling
+#systemd_setup
+
+- name: Install Python, GCC
+  ansible.builtin.yum:
+    name:
+      - python36
+      - gcc
+      - python-devel
+    state: installed
+
+- name: Setting Application Prerequisites
+  ansible.builtin.import_task:
+    file: app-prereq.yml
+
+- name: Install python dependencies
+  ansible.builtin.pip:
+    requirements: /app/requirements.txt
+
+- name: setup systemD
+  ansible.builtin.import_task:
+    file: systemd-setup.yml
