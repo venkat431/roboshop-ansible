@@ -1,0 +1,12 @@
+[Unit]
+Description = User Service
+[Service]
+User=roboshop
+Environment=MONGO={{ lookup('amazon.aws.aws_ssm', '{{env}}.{{component}}.mongo') }}
+Environment=REDIS_HOST={{ lookup('amazon.aws.aws_ssm', '{{env}}.{{component}}.redis_host') }}
+Environment=MONGO_URL={{ lookup('amazon.aws.aws_ssm', '{{env}}.{{component}}.mongo_url') }}
+ExecStart=/bin/node /app/server.js
+SyslogIdentifier=user
+
+[Install]
+WantedBy=multi-user.target

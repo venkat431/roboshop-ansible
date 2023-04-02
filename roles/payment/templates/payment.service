@@ -1,0 +1,20 @@
+[Unit]
+Description=Payment Service
+
+[Service]
+User=root
+WorkingDirectory=/app
+Environment=CART_HOST={{ lookup('amazon.aws.aws_ssm', '{{ env }}.{{ component }}.cart_url') }}
+Environment=CART_PORT={{ lookup('amazon.aws.aws_ssm', '{{ env }}.{{ component }}.cart_port') }}
+Environment=USER_HOST={{ lookup('amazon.aws.aws_ssm', '{{ env }}.{{ component }}.user_host') }}
+Environment=USER_PORT={{ lookup('amazon.aws.aws_ssm', '{{ env }}.{{ component }}.user_port') }}
+Environment=AMQP_HOST={{ lookup('amazon.aws.aws_ssm', '{{ env }}.{{ component }}.amqp_host') }}
+Environment=AMQP_USER=roboshop
+Environment=AMQP_PASS=roboshop123
+
+ExecStart=/usr/local/bin/uwsgi --ini payment.ini
+ExecStop=/bin/kill -9 $MAINPID
+SyslogIdentifier=payment
+
+[Install]
+WantedBy=multi-user.target
