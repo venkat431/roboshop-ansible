@@ -3,8 +3,8 @@ Description = Catalogue Service
 
 [Service]
 User=roboshop
-Environment=MONGO={{ lookup('amazon.aws.aws_ssm', '{{ env }}.{{ component }}.mongo') }}
-Environment=MONGO_URL={{ lookup('amazon.aws.aws_ssm', '{{ env }}.{{ component }}.mongo_url') }}
+Environment=MONGO={{ lookup('amazon.aws.aws_ssm', "{{ env }}.{{ component }}.mongo") }}
+Environment=MONGO_URL="{{ lookup('amazon.aws.aws_ssm', "{{ env }}.{{ component }}.mongo_url") }}"
 ExecStart=/bin/node /app/server.js
 SyslogIdentifier=catalogue
 
