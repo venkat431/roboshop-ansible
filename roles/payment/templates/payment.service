@@ -4,11 +4,11 @@ Description=Payment Service
 [Service]
 User=root
 WorkingDirectory=/app
-Environment=CART_HOST={{ lookup('amazon.aws.aws_ssm', '{{ env }}.{{ component }}.cart_url') }}
-Environment=CART_PORT={{ lookup('amazon.aws.aws_ssm', '{{ env }}.{{ component }}.cart_port') }}
-Environment=USER_HOST={{ lookup('amazon.aws.aws_ssm', '{{ env }}.{{ component }}.user_host') }}
-Environment=USER_PORT={{ lookup('amazon.aws.aws_ssm', '{{ env }}.{{ component }}.user_port') }}
-Environment=AMQP_HOST={{ lookup('amazon.aws.aws_ssm', '{{ env }}.{{ component }}.amqp_host') }}
+Environment=CART_HOST={{ lookup('amazon.aws.aws_ssm', '{{ env }}.{{ component }}.cart_url', region='us-east-1') }}
+Environment=CART_PORT={{ lookup('amazon.aws.aws_ssm', '{{ env }}.{{ component }}.cart_port', region='us-east-1') }}
+Environment=USER_HOST={{ lookup('amazon.aws.aws_ssm', '{{ env }}.{{ component }}.user_host', region='us-east-1') }}
+Environment=USER_PORT={{ lookup('amazon.aws.aws_ssm', '{{ env }}.{{ component }}.user_port', region='us-east-1') }}
+Environment=AMQP_HOST={{ lookup('amazon.aws.aws_ssm', '{{ env }}.{{ component }}.amqp_host', region='us-east-1') }}
 Environment=AMQP_USER=roboshop
 Environment=AMQP_PASS=roboshop123
 
