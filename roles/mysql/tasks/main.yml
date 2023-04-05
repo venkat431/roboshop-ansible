@@ -18,4 +18,4 @@
     enabled: yes
 
 - name: Set root password
-  ansible.builtin.shell: mysql_secure_installation --set-root-pass Roboshop@1
+  ansible.builtin.shell: mysql_secure_installation --set-root-pass {{ lookup('amazon.aws.aws_ssm', "{{env}}.{{component}}.mysql_pass", region='us-east-1') }}

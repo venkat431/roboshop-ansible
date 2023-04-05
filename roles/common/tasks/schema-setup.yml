@@ -23,4 +23,4 @@
         state: installed
 
     - name: Load mysql database
-      ansible.builtin.shell: mysql -h mysql-dev.devops-practice.tech -uroot -pRoboshop@1 < /app/schema/{{ component }}.sql
+      ansible.builtin.shell: mysql -h mysql-dev.devops-practice.tech -u"{{ lookup('amazon.aws.aws_ssm', "{{ env }}.{{ component }}.mysql_user", region='us-east-1') }}" -p"{{ lookup('amazon.aws.aws_ssm', "{{ env }}.{{ component }}.mysql_pass", region='us-east-1') }}" < /app/schema/{{ component }}.sql
